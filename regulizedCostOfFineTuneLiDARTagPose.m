@@ -42,7 +42,9 @@ function cost = regulizedCostOfFineTuneLiDARTagPose(theta_x, theta_y, theta_z, T
     L_X_transformed = [x_prime; y_prime; z_prime; ones(size(x_prime))]; % transformed points in LiDAR frame
     C_X_transformed = P * L_X_transformed;
     C_X_transformed = C_X_transformed ./ C_X_transformed(3,:);
-    X_at_lidar_frame = inv(H_LT) * inv(H_LC) * L_X_transformed;
+    % that's wrong according to this: https://github.com/UMich-BipedLab/extrinsic_lidar_camera_calibration/blob/a96d906b20e05f6761d6c7460765a846aff44985/regulizedCostOfFineTuneLiDARTagPose.m#L45
+    %X_at_lidar_frame = inv(H_LT) * inv(H_LC) * L_X_transformed;
+    X_at_lidar_frame = inv(H_LT) * L_X_transformed;
 
     cost_x = 0;
     cost_y = 0;

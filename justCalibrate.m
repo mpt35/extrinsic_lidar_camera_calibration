@@ -43,15 +43,17 @@ distortion_param = [0.099769, -0.240277, 0.002463, 0.000497, 0.000000];
 opt.H_LC.rpy_init = [90 0 90];
 
 % train data id from getBagData.m
-trained_ids = [5,8,9,11]; % 
-skip_indices = [1, 2, 3, 7, 12]; %% skip non-standard 
+%trained_ids = [5,8,9,11]; % 
+%skip_indices = [1, 2, 3, 7, 12]; %% skip non-standard 
+trained_ids = [1]; % 
+skip_indices = []; %% skip non-standard 
 
 % validate the calibration result if one has validation dataset(s)
 % (Yes:1; No: 0)
 % Note: A validation dataset is the same as training set, i.e. it has to
 % have calibration targets in the scene; However, a testing set does not
 % need targets in the scene. 
-validation_flag = 1; 
+validation_flag = 0; 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% path.load_dir: directory of saved files
@@ -59,7 +61,7 @@ validation_flag = 1;
 %%% bag_file_path: bag files of images 
 %%% mat_file_path: mat files of extracted lidar target's point clouds
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-path.load_dir = "load_data/";
+path.load_dir = "load_all_vertices/";
 path.load_all_vertices = "ALL_LiDAR_vertices/";
 path.bag_file_path = "bagfiles/";
 path.mat_file_path = "LiDARTag_data/";

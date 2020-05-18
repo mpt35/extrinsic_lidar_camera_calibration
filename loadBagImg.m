@@ -49,7 +49,8 @@ function loadBagImg(img_handle, bag_file_path, bag_file, display, clean)
     hold(img_handle, 'on');
     bagselect = rosbag(bag_file_path + bag_file);
     bagselect2 = select(bagselect,'Time',...
-        [bagselect.StartTime bagselect.StartTime + 1],'Topic','/camera/color/image_raw');
+        [bagselect.StartTime bagselect.StartTime + 1],'Topic','/cam0/image_rect_color');
+        %[bagselect.StartTime bagselect.StartTime + 1],'Topic','/camera/color/image_raw');
     allMsgs = readMessages(bagselect2);
     [img,~] = readImage(allMsgs{1});
     imshow(img, 'Parent', img_handle);

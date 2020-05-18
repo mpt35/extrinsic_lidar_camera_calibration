@@ -42,7 +42,7 @@ function projectBackToImage(image_handle, P, X, marker_size , marker_color, lege
     if clean && isvalid(img_handle)
         img_handle.cla;
     end
-    
+    matlab 
     hold(image_handle, 'on');
     projected_points = P * X;
     projected_points = projected_points ./ projected_points(3,:);

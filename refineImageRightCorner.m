@@ -38,7 +38,7 @@ function image_data = refineImageRightCorner(opts, image_data, display)
 
     bagselect = rosbag(image_data.path + image_data.name);
     bagselect2 = select(bagselect,'Time',...
-        [bagselect.StartTime bagselect.StartTime + 1],'Topic','/camera/color/image_raw');
+        [bagselect.StartTime bagselect.StartTime + 1],'Topic','/cam0/image_rect_color');
     allMsgs = readMessages(bagselect2);
     [img,~] = readImage(allMsgs{1});
     gray = rgb2gray(img);
